@@ -8,15 +8,20 @@ export default function useIP() {
       try {
         const response = await fetch('/api/weather');
         const data = await response.json();
-        setIp(data.ip);
+        
+        if (data.ip) {
+          setIp(data.ip);
+        } else {
+          setIp('IP не найден');
+        }
       } catch (error) {
         console.error('Ошибка при получении IP:', error);
         setIp('Ошибка при получении IP');
-      } 
+      }
     };
 
     fetchIp();
   }, []);
-  
+
   return { ip };
 }

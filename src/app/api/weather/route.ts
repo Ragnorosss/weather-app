@@ -3,8 +3,10 @@ import { NextRequest, NextResponse } from 'next/server';
 export async function GET(req: NextRequest) {
   const url = new URL(req.url);
   const city = url.searchParams.get('city');
+
+  // Получаем IP из заголовка x-forwarded-for
   const forwardedFor = req.headers.get('x-forwarded-for');
-  const ip = forwardedFor ? forwardedFor.split(',')[0].trim() : "100.10.123.2";
+  const ip = forwardedFor?.split(',')[0]?.trim();
 
   if (!city && !ip) {
     return NextResponse.json({ error: 'Не указан город или IP' }, { status: 400 });
@@ -16,10 +18,10 @@ export async function GET(req: NextRequest) {
   if (!apiKey) {
     return NextResponse.json({ error: 'API ключ не найден' }, { status: 500 });
   }
-  // days=14
+
   try {
     const weatherResponse = await fetch(
-      `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${query}&&aqi=yes`
+      `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${query}&days=14&aqi=yes`
     );
 
     if (!weatherResponse.ok) {
@@ -33,7 +35,7 @@ export async function GET(req: NextRequest) {
     }
 
     return NextResponse.json(weatherData);
-  } catch (error:any) {
+  } catch (error: any) {
     console.error('Ошибка:', error);
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
