@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { EDays } from '@/enum/days';
 import styles from './banner-list.module.scss';
 import { WeatherDataCurrent } from '@/types/WeatehrDataCurrent';
@@ -20,7 +21,7 @@ const BannerList: FC<IBannerList> = ({ days, weatherData }) => {
               Макс: {day.day.maxtemp_c}°C, Мин: {day.day.mintemp_c}°C
             </li>
             <li>Условия: {day.day.condition.text}</li>
-            <img src={`http:${day.day.condition.icon}`} alt="forecast icon" />
+            <Image src={`http:${day.day.condition.icon}`} alt="forecast icon" width={100} height={100}/>
           </li>
         ))}
       </ul>

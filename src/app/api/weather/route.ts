@@ -3,11 +3,10 @@ import { NextRequest, NextResponse } from 'next/server';
 export async function GET(req: NextRequest) {
   const url = new URL(req.url);
   const city = url.searchParams.get('city');
-
-  // Получаем IP из заголовка x-forwarded-for
+  const days = url.searchParams.get('days') || '1'; // Значение по умолчанию 1 день
   const forwardedFor = req.headers.get('x-forwarded-for');
   const ip = forwardedFor?.split(',')[0]?.trim();
-
+  //@typescript-eslint/no-explicit-any
   if (!city && !ip) {
     return NextResponse.json({ error: 'Не указан город или IP' }, { status: 400 });
   }
@@ -21,7 +20,7 @@ export async function GET(req: NextRequest) {
 
   try {
     const weatherResponse = await fetch(
-      `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${query}&days=14&aqi=yes`
+      `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${query}&days=${days}&aqi=yes`
     );
 
     if (!weatherResponse.ok) {
@@ -33,7 +32,7 @@ export async function GET(req: NextRequest) {
     if (!weatherData || !weatherData.location || !weatherData.forecast) {
       throw new Error('Неверный формат данных от Weather API');
     }
-
+    //@typescript-eslint/no-explicit-any
     return NextResponse.json(weatherData);
   } catch (error: any) {
     console.error('Ошибка:', error);
