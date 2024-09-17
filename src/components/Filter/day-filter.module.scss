@@ -1,0 +1,25 @@
+.filter {
+  display: flex;
+  gap: 30px;
+  > button {
+    width: 250px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 25px;
+    margin-bottom: 50px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    font-size: 20px;
+    color: #fff;
+    transition: all 0.4s ease-in-out;
+    &:hover {
+      background: #fff;
+      color: #000;
+      border: 1px solid rgba(green, 1);
+    }
+  }
+}

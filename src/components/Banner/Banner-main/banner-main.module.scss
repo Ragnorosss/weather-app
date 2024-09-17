@@ -1,35 +1,89 @@
-.banner{
+.banner {
+  display: flex;
+  flex-direction: column;
+  max-width: 1000px;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.3); // полупрозрачная граница
+  border-radius: 25px;
+  margin: 0 auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1); // полупрозрачный белый фон
+  backdrop-filter: blur(10px); // размытие фона
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); // мягкая тень для эффекта глубины
+  border: 1px solid rgba(255, 255, 255, 0.3); // доп
+  &Inner {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: 1px solid black;
+    flex-direction: column-reverse;
+    padding: 50px 0;
+    >p{
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-size: 20px;
+    }
+  }
+  &Title {
+    font-size: 24px;
+    font-weight: 500;
+  }
+  &Time {
+  }
+  &Temp {
+  }
+  &Input {
+    width: 100%;
+    max-width: 500px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 25px;
-    margin: 0 auto;
+    margin: 50px;
     padding: 20px;
-    &Inner{
-        padding: 50px 0;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease-in-out;
+    &::placeholder {
+      color: #fff;
+      font-size: 20px;
     }
-    &Title{
-        font-size: 24px;
-        font-weight: 500;
+    &:focus {
+      outline: 1px solid rgba(0, 0, 0, 0.8);
     }
-    &Time{
-
+    &:hover {
+      outline: 1px solid rgba(0, 0, 0, 0.8);
     }
-    &Temp{
-
+  }
+  &Btn {
+    width: 250px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 25px;
+    margin-bottom: 50px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    font-size: 20px;
+    color: #fff;
+    transition: all 0.4s ease-in-out;
+    &:hover {
+      background: #fff;
+      color: #000;
+      border: 1px solid rgba(green, 1);
     }
+  }
 }
-.forecast{
+.forecast {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 60px;
+  > li {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 60px;
-    >li{
-        display: flex;
-        flex-direction: column-reverse;
-        border: 1px solid black;
-        padding: 30px;
-    }
-
+    flex-direction: column-reverse;
+    border: 1px solid black;
+    padding: 30px;
+  }
 }

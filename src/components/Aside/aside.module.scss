@@ -1,0 +1,72 @@
+.aside {
+  position: relative;
+
+  &OpenMenu {
+    position: relative;
+    width: 30px;
+    height: 40px;
+    > span {
+      position: absolute;
+      display: block;
+      width: 100%;
+      height: 2px;
+      background-color: #c4c4c4;
+      &::before {
+        content: '';
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 2px;
+        background-color: #c4c4c4;
+        z-index: 1;
+        top: 20px;
+      }
+      &::after {
+        content: '';
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 2px;
+        background-color: #c4c4c4;
+        z-index: 1;
+        top: 10px;
+      }
+    }
+  }
+  & .listWeather {
+    width: 500px;
+    height: 100vh;
+    z-index: 1;
+    padding-top: 30px;
+    background-color: #000;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 25px;
+    margin: 0 auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1); 
+    backdrop-filter: blur(10px); 
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); 
+    border: 1px solid rgba(255, 255, 255, 0.3); 
+    > li {
+      font-size: 18px;
+      font-weight: 500;
+    }
+  }
+  &Btn {
+    font-size: 18px;
+    border: none;
+    color: inherit;
+    background: transparent;
+    cursor: pointer;
+  }
+}
+.open {
+  position: absolute;
+  left: 0;
+  transition: all 0.2s ease-in;
+}
+.close {
+  position: absolute;
+  left: -2200%;
+  transition: all 0.2s ease-out;
+}

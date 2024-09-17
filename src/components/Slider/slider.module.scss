@@ -1,0 +1,30 @@
+.slider {
+  height: 100%;
+  min-height: 320px;
+  margin: 50px 0;
+  & .forecastSlide {
+    width: 100%;
+    max-width: 650px;
+    display: flex;
+    flex-direction: column-reverse;
+    max-width: 1000px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.3); // полупрозрачная граница
+    border-radius: 25px;
+    margin: 0 auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1); // полупрозрачный белый фон
+    backdrop-filter: blur(10px); // размытие фона
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); // мягкая тень для эффекта глубины
+    border: 1px solid rgba(255, 255, 255, 0.3); // доп
+    margin-top: 100px;
+    height: 600px;
+    > p {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-size: 20px;
+    }
+  }
+}
